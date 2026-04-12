@@ -57,38 +57,46 @@ plot_function(data,
 
 ## 使用流程
 
-### 方法一：从GitHub直接加载（推荐）
+### 从GitHub直接加载
 
 ```r
 library(required_package1)
 library(required_package2)
 
 # 从GitHub加载函数
-source("https://raw.githubusercontent.com/ShengXinF3/BioPlotTools/main/functions/plot_xxx.R")
+# 使用 jsdelivr CDN（推荐，国内访问快）
+source("https://cdn.jsdelivr.net/gh/ShengXinF3/BioPlotTools@main/functions/plot_xxx.R")
 
-# 准备数据
-# [数据准备步骤]
+# 1. 加载数据
+# 方式1：直接从GitHub加载测试数据（最简单）
+url <- "https://github.com/ShengXinF3/BioPlotTools/raw/main/data/test_data_xxx.xlsx"
+temp_file <- tempfile(fileext = ".xlsx")
+download.file(url, temp_file, mode = "wb")
+data <- read_excel(temp_file, na = "---")
 
-# 基础绘图
-plot_function(data)
+# 方式2：用你自己的数据
+# 数据格式要求：[说明数据格式]
+# 示例：
+#   column1    column2    column3
+#   value1     value2     value3
+#   ...
+# data <- read_excel("your_data.xlsx")
+# data <- read.csv("your_data.csv")
 
-# 自定义参数
-plot_function(data,
+# 2. 数据处理
+# [数据处理步骤]
+
+# 3. 运行分析
+# [分析步骤]
+
+# 4. 绘图 - 基础用法
+plot_function(result, param)
+
+# 5. 绘图 - 自定义参数
+plot_function(result, param,
              param1 = value1,
              param2 = value2,
              output_name = "output_path")
-```
-
-### 方法二：本地加载
-
-如果已经下载了函数文件：
-
-```r
-library(required_package1)
-library(required_package2)
-source("plot_xxx.R")
-
-# 后续步骤同上
 ```
 
 ## 一些设计细节
@@ -105,86 +113,28 @@ source("plot_xxx.R")
 
 | 参数 | 说明 | 默认值 |
 |------|------|--------|
-| data | 输入数据 | - |
 | param1 | 参数1说明 | 默认值1 |
 | param2 | 参数2说明 | 默认值2 |
 | main_color | 主要颜色 | #9370DB |
 | base_size | 基础字号 | 15 |
-| plot_width | 图宽（英寸） | 10 |
-| plot_height | 图高（英寸） | 8 |
+| plot_width | 图宽（英寸） | 12 |
+| plot_height | 图高（英寸） | 9 |
 | dpi | PNG分辨率 | 300 |
 | output_name | 输出文件名 | 默认名称 |
-
-## 实现原理
-
-[如果有特殊的算法或实现逻辑，在这里说明]
-
-```r
-# 关键代码示例
-```
-
-## 使用建议
-
-**[建议类别1]**
-- 建议1
-- 建议2
-- 建议3
-
-**[建议类别2]**
-- 建议1
-- 建议2
-
-**[建议类别3]**
-```r
-# 实用技巧代码示例
-```
-
-## 常见问题
-
-**[问题1]**
-
-[解决方案]
-```r
-# 解决代码
-```
-
-**[问题2]**
-
-[解决方案]
-```r
-# 解决代码
-```
-
-**[问题3]**
-
-[解决方案]
 
 ## 代码获取
 
 **GitHub仓库：** https://github.com/ShengXinF3/BioPlotTools
 
-仓库包含：
-- `functions/plot_xxx.R` - 核心绘图函数
-- `examples/xxx_example.R` - 完整使用流程
-- `examples/quick_start.R` - 快速开始示例
-- `data/test_xxx_data.xxx` - 测试数据
-
-**三种使用方式：**
-
 1. **直接从GitHub加载（最简单）**
 ```r
-source("https://raw.githubusercontent.com/ShengXinF3/BioPlotTools/main/functions/plot_xxx.R")
+source("https://cdn.jsdelivr.net/gh/ShengXinF3/BioPlotTools@main/functions/plot_xxx.R")
 ```
 
 2. **克隆整个仓库**
 ```bash
 git clone https://github.com/ShengXinF3/BioPlotTools.git
 ```
-
-3. **下载单个文件**
-访问仓库页面，下载需要的文件即可。
-
-所有代码都有详细注释，开箱即用。测试数据可以帮你快速上手。
 
 ## 总结
 
@@ -200,5 +150,7 @@ git clone https://github.com/ShengXinF3/BioPlotTools.git
 ---
 
 **分析不是跑代码，而是构建可信的证据链。**
+
+**扫码关注微信公众号【生信F3】获取文章完整内容，分享生物信息学最新知识。**
 
 ![ShengXinF3_QRcode](https://raw.githubusercontent.com/ShengXinF3/ShengXinF3/master/ShengXinF3_QRcode.jpg)

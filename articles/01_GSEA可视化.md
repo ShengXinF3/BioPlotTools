@@ -10,7 +10,7 @@
 
 这个函数生成的图包含三个部分：
 
-![GSEA示例图](Output_Plots/GSEA_All_Pathways/KEGG_OXIDATIVE_PHOSPHORYLATION.png)
+![GSEA示例图](../examples/Output_Plots/GSEA_All_Pathways/KEGG_OXIDATIVE_PHOSPHORYLATION.png)
 
 - 上面是ES曲线，会自动标注通路中的关键基因
 - 中间是条形码图，叠加了表达量的热图
@@ -28,7 +28,7 @@ NES、P值、校正P值这些统计信息会自动显示在图上。
 # 默认标注8个基因
 plot_gsea(gsea_result, "KEGG_OXIDATIVE_PHOSPHORYLATION")
 
-# 标注更多基因
+# 标注更多基因(随机)
 plot_gsea(gsea_result, "KEGG_WNT_SIGNALING_PATHWAY", n_genes = 12)
 ```
 
@@ -82,7 +82,7 @@ for (i in 1:nrow(sig_pathways)) {
 
 ## 使用流程
 
-### 方法一：从GitHub直接加载（推荐）
+### 从GitHub直接加载
 
 ```r
 library(readxl)
@@ -91,15 +91,9 @@ library(clusterProfiler)
 library(msigdbr)
 
 # 从GitHub加载函数
-# 方式1：使用 jsdelivr CDN（推荐，国内访问快）
+#  使用 jsdelivr CDN（推荐，国内访问快）
 source("https://cdn.jsdelivr.net/gh/ShengXinF3/BioPlotTools@main/functions/plot_gsea.R")
 
-# 方式2：GitHub 官方源
-# source("https://raw.githubusercontent.com/ShengXinF3/BioPlotTools/main/functions/plot_gsea.R")
-
-# 方式3：如果网络都不行，克隆仓库到本地使用
-# 在终端运行：git clone https://github.com/ShengXinF3/BioPlotTools.git
-# 然后：source("BioPlotTools/functions/plot_gsea.R")
 
 # 1. 加载差异表达数据
 # 方式1：直接从GitHub加载测试数据（最简单）
@@ -158,19 +152,7 @@ plot_gsea(gsea_result, "KEGG_OXIDATIVE_PHOSPHORYLATION",
          output_name = "Output/OxPhos")
 ```
 
-### 方法二：本地加载
-
-如果已经下载了函数文件：
-
-```r
-library(clusterProfiler)
-library(msigdbr)
-source("funs_gsea_plot.R")
-
-# 后续步骤同上
-```
-
-## 一些设计细节
+一些设计细节
 
 标注的基因在ES曲线和条形码图中都用红色标出，这样能一眼看出这些基因在通路中的位置。
 
@@ -196,98 +178,19 @@ source("funs_gsea_plot.R")
 | dpi | PNG分辨率 | 300 |
 | output_name | 输出文件名 | pathway_id |
 
-## 使用建议
-
-**基因标注数量**
-- 简单通路（少于50个基因）：标注5-8个
-- 复杂通路（超过100个基因）：标注10-15个
-- 标注太多会显得杂乱
-
-**颜色选择**
-- 学术论文用默认配色就行
-- 如果期刊有特殊要求可以调整
-- 做演示可以用更鲜艳的颜色
-
-**图片尺寸**
-- 单栏图：宽度8-10英寸
-- 双栏图：宽度12-14英寸
-- PPT用：宽度10-12英寸，DPI可以降到150
-
-**批量处理**
-```r
-# 只画显著通路
-sig_pathways <- gsea_result@result %>%
-  filter(p.adjust < 0.05) %>%
-  arrange(NES)
-
-# 分开处理上调和下调
-up_pathways <- sig_pathways %>% filter(NES > 0)
-down_pathways <- sig_pathways %>% filter(NES < 0)
-```
-
-## 常见问题
-
-**提示"Pathway not found"**
-
-检查pathway_id是否正确：
-```r
-head(gsea_result@result$ID)
-```
-
-**基因标签重叠**
-
-减少标注数量或增加图片宽度：
-```r
-plot_gsea(gsea_result, pathway_id, 
-         n_genes = 6,
-         plot_width = 14)
-```
-
-**只要PDF不要PNG**
-
-修改函数源码，注释掉ggsave PNG那一行，或者手动删除PNG文件。
-
-**其他物种**
-
-只要GSEA分析时用对应物种的基因集就行：
-```r
-# 人
-m_df <- msigdbr(species = "Homo sapiens")
-
-# 小鼠
-m_df <- msigdbr(species = "Mus musculus")
-
-# 大鼠
-m_df <- msigdbr(species = "Rattus norvegicus")
-```
-
 ## 代码获取
 
 **GitHub仓库：** https://github.com/ShengXinF3/BioPlotTools
 
-仓库包含：
-- `functions/plot_gsea.R` - 核心绘图函数
-- `examples/gsea_example.R` - 完整GSEA分析流程
-- `examples/quick_start.R` - 快速开始示例
-- `data/test_data_gsea.xlsx` - 测试用差异表达数据
-- `data/test_gsea_result.rds` - 预计算的GSEA结果
-
-**三种使用方式：**
-
 1. **直接从GitHub加载（最简单）**
 ```r
-source("https://raw.githubusercontent.com/ShengXinF3/BioPlotTools/main/functions/plot_gsea.R")
+source("https://cdn.jsdelivr.net/gh/ShengXinF3/BioPlotTools@main/functions/plot_gsea.R")
 ```
 
 2. **克隆整个仓库**
 ```bash
 git clone https://github.com/ShengXinF3/BioPlotTools.git
 ```
-
-3. **下载单个文件**
-访问仓库页面，下载需要的文件即可。
-
-所有代码都有详细注释，开箱即用。测试数据可以帮你快速上手。
 
 ## 总结
 
