@@ -48,17 +48,39 @@ gsea_result <- GSEA(genelist, TERM2GENE = term2gene, pvalueCutoff = 1)
 plot_gsea(gsea_result, "KEGG_OXIDATIVE_PHOSPHORYLATION")
 ```
 
+## Repository Structure
+
+```
+BioPlotTools/
+├── functions/       # Plotting functions
+├── examples/        # Usage examples
+├── data/           # Test data
+├── articles/       # Blog posts (Chinese)
+├── templates/      # Templates for new functions and articles
+├── README.md
+├── CONTRIBUTING.md
+├── CHANGELOG.md
+└── LICENSE
+```
+
 ## Examples
 
 See the [examples](examples/) directory for complete workflows:
 - `gsea_example.R` - Complete GSEA analysis and plotting workflow
-- `gsea_batch_plot.R` - Batch plotting for multiple pathways
+- `quick_start.R` - Quick start guide
 
 ## Test Data
 
 Test data is available in the [data](data/) directory:
 - `test_gene_data.xlsx` - Sample differential expression data
 - `test_gsea_result.rds` - Pre-computed GSEA results
+
+## Articles
+
+Chinese blog posts about each function are available in the [articles](articles/) directory:
+- [GSEA富集分析可视化](articles/01_GSEA可视化.md) - 生信绘图工具系列第1篇
+
+More articles coming soon!
 
 ## Function Documentation
 
