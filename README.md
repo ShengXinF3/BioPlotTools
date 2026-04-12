@@ -79,11 +79,6 @@ git clone https://github.com/ShengXinF3/BioPlotTools.git
 
 MIT License
 
-## 联系
-
-- GitHub Issues: https://github.com/ShengXinF3/BioPlotTools/issues
-- 公众号：生信F3
-
 **分析不是跑代码，而是构建可信的证据链。**
 
 ![ShengXinF3_QRcode](https://raw.githubusercontent.com/ShengXinF3/ShengXinF3/master/ShengXinF3_QRcode.jpg)
