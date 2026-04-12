@@ -8,17 +8,22 @@ library(clusterProfiler)
 library(msigdbr)
 
 # Load the plot_gsea function from GitHub
-source("https://raw.githubusercontent.com/ShengXinF3/BioPlotTools/main/functions/plot_gsea.R")
+# Method 1: Use jsdelivr CDN (recommended, fast in China)
+source("https://cdn.jsdelivr.net/gh/ShengXinF3/BioPlotTools@main/functions/plot_gsea.R")
 
-# Or load from local file if you have downloaded it
-# source("../functions/plot_gsea.R")
+# Method 2: GitHub official source
+# source("https://raw.githubusercontent.com/ShengXinF3/BioPlotTools/main/functions/plot_gsea.R")
+
+# Method 3: If network doesn't work, clone repo and use locally
+# In terminal: git clone https://github.com/ShengXinF3/BioPlotTools.git
+# Then: source("../functions/plot_gsea.R")
 
 # ============================================================================
 # Step 1: Load and prepare gene expression data
 # ============================================================================
 
 # Load test data (you can replace this with your own data)
-gene_data <- read_excel("../data/test_gene_data.xlsx", na = "---")
+gene_data <- read_excel("./data/test_data_gsea.xlsx", na = "---")
 
 # Convert log2FC to numeric and remove invalid values
 gene_data$`log2(fc)` <- as.numeric(gene_data$`log2(fc)`)
@@ -132,6 +137,3 @@ down_pathways <- sig_pathways %>% filter(NES < 0)
 
 # Tip 3: Save GSEA result for later use
 saveRDS(gsea_result, "my_gsea_result.rds")
-
-# Load saved result
-# gsea_result <- readRDS("my_gsea_result.rds")

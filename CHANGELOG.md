@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `gsea_example.R` - Full GSEA workflow
   - `quick_start.R` - Quick start guide
 - Test data
-  - `test_gene_data.xlsx` - Sample differential expression data
+  - `test_data_gsea.xlsx` - Sample differential expression data
   - `test_gsea_result.rds` - Pre-computed GSEA results
 - Documentation
   - README.md with usage instructions
@@ -44,7 +44,7 @@ BioPlotTools/
 │   ├── gsea_example.R
 │   └── quick_start.R
 ├── data/
-│   ├── test_gene_data.xlsx
+│   ├── test_data_gsea.xlsx
 │   └── test_gsea_result.rds
 ├── articles/
 │   ├── README.md

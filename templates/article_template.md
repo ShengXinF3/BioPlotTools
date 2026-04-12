@@ -196,3 +196,9 @@ git clone https://github.com/ShengXinF3/BioPlotTools.git
 - [优点4]
 
 [适用场景总结]
+
+---
+
+**分析不是跑代码，而是构建可信的证据链。**
+
+![ShengXinF3_QRcode](https://raw.githubusercontent.com/ShengXinF3/ShengXinF3/master/ShengXinF3_QRcode.jpg)
