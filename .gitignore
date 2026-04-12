@@ -1,0 +1,30 @@
+# R files
+.Rhistory
+.RData
+.Rproj.user
+*.Rproj
+
+# Output files
+*.pdf
+*.png
+*.jpeg
+*.jpg
+
+# Temporary files
+*~
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# IDE
+.vscode/
+.idea/
+
+# Output directories (except example outputs)
+Output_Plots/
+GSEA_Plots/
+plots/
+results/
+
+# Keep example outputs
+!examples/output/
