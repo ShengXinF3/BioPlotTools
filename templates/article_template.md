@@ -20,40 +20,31 @@
 
 ## 主要功能
 
-### [功能1标题]
+### [核心功能1标题]
 
-[功能1的详细说明]
+[核心功能1的详细说明 - 这是函数最重要的功能]
 
 ```r
-# 基础用法
-plot_function(data)
-
-# 进阶用法
+# 基础用法示例
 plot_function(data, param = value)
 ```
 
-### [功能2标题]
+### [核心功能2标题]
 
-[功能2的详细说明]
+[核心功能2的详细说明 - 这是函数的第二个重要功能]
 
 ```r
-# 示例代码
+# 功能2示例代码
 plot_function(data,
              param1 = value1,
              param2 = value2)
 ```
 
-### [功能3标题]
-
-[功能3的详细说明]
-
-```r
-# 示例代码
-```
-
 ### 输出格式
 
 每次运行会同时生成PDF和PNG两种格式，PDF是矢量图适合投稿，PNG适合做PPT。
+
+**注意：主要功能部分只保留2-3个核心功能演示，不要添加过多延伸内容（如适配不同数据类型、高级自定义等），保持文章简洁聚焦。**
 
 ## 使用流程
 
@@ -99,14 +90,6 @@ plot_function(result, param,
              output_name = "output_path")
 ```
 
-## 一些设计细节
-
-[设计亮点1的说明]
-
-[设计亮点2的说明]
-
-[设计亮点3的说明]
-
 ## 参数说明
 
 主要参数：
@@ -135,17 +118,6 @@ source("https://cdn.jsdelivr.net/gh/ShengXinF3/BioPlotTools@main/functions/plot_
 ```bash
 git clone https://github.com/ShengXinF3/BioPlotTools.git
 ```
-
-## 总结
-
-这个函数的优点：
-
-- [优点1]
-- [优点2]
-- [优点3]
-- [优点4]
-
-[适用场景总结]
 
 ---
 

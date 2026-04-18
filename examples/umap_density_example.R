@@ -14,8 +14,9 @@ cat("降维方法:", paste(names(seu@reductions), collapse = ", "), "\n")
 cat("细胞类型:", paste(unique(seu@meta.data$cell_type), collapse = ", "), "\n\n")
 
 # 创建输出目录
-if (!dir.exists("examples/plot_umap_density")) {
-  dir.create("examples/plot_umap_density", recursive = TRUE)
+output_dir <- "examples/output/plot_umap_density"
+if (!dir.exists(output_dir)) {
+  dir.create(output_dir, recursive = TRUE)
 }
 
 # ========== 示例1: 单个细胞类型密度图 ==========
@@ -30,9 +31,9 @@ p1 <- plot_umap_density(
   title = "CD4 T Cells Density Distribution"
 )
 p1
-ggsave("examples/plot_umap_density/01_single_celltype.pdf", p1, width = 10, height = 8)
-ggsave("examples/plot_umap_density/01_single_celltype.png", p1, width = 10, height = 8, dpi = 300)
-cat("✓ 已保存: examples/plot_umap_density/01_single_celltype.pdf & .png\n\n")
+ggsave(file.path(output_dir, "01_single_celltype.pdf"), p1, width = 10, height = 8)
+ggsave(file.path(output_dir, "01_single_celltype.png"), p1, width = 10, height = 8, dpi = 300)
+cat("✓ 已保存:", file.path(output_dir, "01_single_celltype.pdf & .png\n\n"))
 
 # ========== 示例2: 多个细胞类型密度图（每个独立等高线）==========
 cat("========== 示例2: 多个细胞类型密度图 ==========\n")
@@ -47,9 +48,9 @@ p2 <- plot_umap_density(
   title = "Multiple Cell Types with Independent Contours"
 )
 p2
-ggsave("examples/plot_umap_density/02_multiple_celltypes.pdf", p2, width = 10, height = 8)
-ggsave("examples/plot_umap_density/02_multiple_celltypes.png", p2, width = 10, height = 8, dpi = 300)
-cat("✓ 已保存: examples/plot_umap_density/02_multiple_celltypes.pdf & .png\n\n")
+ggsave(file.path(output_dir, "02_multiple_celltypes.pdf"), p2, width = 10, height = 8)
+ggsave(file.path(output_dir, "02_multiple_celltypes.png"), p2, width = 10, height = 8, dpi = 300)
+cat("✓ 已保存:", file.path(output_dir, "02_multiple_celltypes.pdf & .png\n\n"))
 
 # ========== 示例3: 筛选特定条件 ==========
 cat("========== 示例3: 筛选特定条件 ==========\n")
@@ -66,9 +67,9 @@ p3 <- plot_umap_density(
   title = "CD14 Monocytes in Treatment Group"
 )
 
-ggsave("examples/plot_umap_density/03_filtered_condition.pdf", p3, width = 10, height = 8)
-ggsave("examples/plot_umap_density/03_filtered_condition.png", p3, width = 10, height = 8, dpi = 300)
-cat("✓ 已保存: examples/plot_umap_density/03_filtered_condition.pdf & .png\n\n")
+ggsave(file.path(output_dir, "03_filtered_condition.pdf"), p3, width = 10, height = 8)
+ggsave(file.path(output_dir, "03_filtered_condition.png"), p3, width = 10, height = 8, dpi = 300)
+cat("✓ 已保存:", file.path(output_dir, "03_filtered_condition.pdf & .png\n\n"))
 
 # ========== 示例4: 自定义参数 ==========
 cat("========== 示例4: 自定义参数 ==========\n")
@@ -88,9 +89,9 @@ p4 <- plot_umap_density(
   title = "NK & DC Cells (Custom Style)"
 )
 
-ggsave("examples/plot_umap_density/04_custom_style.pdf", p4, width = 10, height = 8)
-ggsave("examples/plot_umap_density/04_custom_style.png", p4, width = 10, height = 8, dpi = 300)
-cat("✓ 已保存: examples/plot_umap_density/04_custom_style.pdf & .png\n\n")
+ggsave(file.path(output_dir, "04_custom_style.pdf"), p4, width = 10, height = 8)
+ggsave(file.path(output_dir, "04_custom_style.png"), p4, width = 10, height = 8, dpi = 300)
+cat("✓ 已保存:", file.path(output_dir, "04_custom_style.pdf & .png\n\n"))
 
 # ========== 示例5: 批量生成（不同条件）==========
 cat("========== 示例5: 批量生成不同条件的图 ==========\n")
@@ -110,7 +111,7 @@ for (cond in conditions) {
       title = paste("CD4 T Cells -", cond)
     )
     
-    filename <- paste0("examples/plot_umap_density/05_batch_", cond, ".pdf")
+    filename <- file.path(output_dir, paste0("05_batch_", cond, ".pdf"))
     ggsave(filename, p, width = 10, height = 8)
     cat("✓ 已保存:", filename, "\n")
   }, error = function(e) {
@@ -134,17 +135,17 @@ p6 <- plot_umap_density(
   title = "Small Cell Types (Platelet & Megakaryocyte)"
 )
 
-ggsave("examples/plot_umap_density/06_small_clusters.pdf", p6, width = 10, height = 8)
-cat("✓ 已保存: examples/plot_umap_density/06_small_clusters.pdf\n\n")
+ggsave(file.path(output_dir, "06_small_clusters.pdf"), p6, width = 10, height = 8)
+cat("✓ 已保存:", file.path(output_dir, "06_small_clusters.pdf\n\n"))
 
 cat("\n========== 所有示例完成！ ==========\n")
-cat("\n生成的文件:\n")
-cat("  - examples/plot_umap_density/01_single_celltype.pdf (单个细胞类型)\n")
-cat("  - examples/plot_umap_density/02_multiple_celltypes.pdf (多个细胞类型，独立等高线)\n")
-cat("  - examples/plot_umap_density/03_filtered_condition.pdf (筛选条件)\n")
-cat("  - examples/plot_umap_density/04_custom_style.pdf (自定义样式)\n")
-cat("  - examples/plot_umap_density/05_batch_*.pdf (批量生成)\n")
-cat("  - examples/plot_umap_density/06_cell_subtypes.pdf (细胞亚型)\n")
+cat(sprintf("\n生成的文件保存在: %s\n", output_dir))
+cat("  - 01_single_celltype.pdf (单个细胞类型)\n")
+cat("  - 02_multiple_celltypes.pdf (多个细胞类型，独立等高线)\n")
+cat("  - 03_filtered_condition.pdf (筛选条件)\n")
+cat("  - 04_custom_style.pdf (自定义样式)\n")
+cat("  - 05_batch_*.pdf (批量生成)\n")
+cat("  - 06_small_clusters.pdf (小细胞群)\n")
 
 cat("\n✅ 函数功能测试完成！\n")
 cat("\n核心功能:\n")

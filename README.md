@@ -22,12 +22,20 @@ plot_gsea(gsea_result, "KEGG_OXIDATIVE_PHOSPHORYLATION")
 
 ## 已有函数
 
+### 转录组学
 - **plot_gsea** - GSEA 可视化（详见 [使用教程](articles/01_GSEA可视化.md)）
+
+### 单细胞分析
+- **plot_umap_density** - 单细胞UMAP密度等高线图（详见 [使用教程](articles/02_单细胞UMAP密度图.md)）
+
+### 通用工具
+- **plot_volcano_hyperbolic** - 双曲线阈值火山图（详见 [使用教程](articles/03_双曲线阈值火山图.md)）
+  - 适用于：RNA-seq、CRISPR筛选、蛋白质组、代谢组等
 
 ## 计划添加
 
 **转录组**
-- 火山图、热图、PCA 图
+- 传统火山图、热图、PCA 图
 - GO/KEGG 富集气泡图
 
 **基因组**
