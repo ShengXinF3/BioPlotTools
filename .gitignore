@@ -3,6 +3,8 @@
 .RData
 .Rproj.user
 *.Rproj
+*.rds
+*.RDS
 
 # Output files
 *.pdf

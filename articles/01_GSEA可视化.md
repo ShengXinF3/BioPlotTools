@@ -4,13 +4,11 @@
 
 今天分享的是GSEA富集分析的可视化函数。clusterProfiler的gseaplot2()比较基础，想要更好的效果需要自己调整。这个函数可以自动标注关键基因，生成出版级的三面板图表。
 
-代码已上传GitHub：https://github.com/ShengXinF3/BioPlotTools
-
 ## 先看效果
 
 这个函数生成的图包含三个部分：
 
-![GSEA示例图](../examples/Output_Plots/GSEA_All_Pathways/KEGG_OXIDATIVE_PHOSPHORYLATION.png)
+![GSEA示例图](https://cdn.jsdelivr.net/gh/ShengXinF3/DDD@main/Pics/KEGG_OXIDATIVE_PHOSPHORYLATION.png)
 
 - 上面是ES曲线，会自动标注通路中的关键基因
 - 中间是条形码图，叠加了表达量的热图
