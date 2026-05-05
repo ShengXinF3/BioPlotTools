@@ -26,11 +26,46 @@ plot_gsea(gsea_result, "KEGG_OXIDATIVE_PHOSPHORYLATION")
 - **plot_gsea** - GSEA 可视化（详见 [使用教程](articles/01_GSEA可视化.md)）
 
 ### 单细胞分析
+
+#### 原创函数
 - **plot_umap_density** - 单细胞UMAP密度等高线图（详见 [使用教程](articles/02_单细胞UMAP密度图.md)）
+
+#### 改编函数（来自 plot1cell）
+- **plot_cell_fraction** - 细胞比例图 ✅
+  - 展示不同条件下细胞类型的比例变化
+  - 支持显示生物学重复
+  - 原作者: Haojia Wu (plot1cell)
+  
+- **plot_complex_dotplot** - 复杂点图 ✅
+  - 单基因和多基因点图
+  - 点大小=表达比例，颜色=表达量
+  - 支持跨组对比和分面展示
+  - 原作者: Haojia Wu (plot1cell)
+  
+- **plot_complex_upset** - Upset图 ✅
+  - DEG交集和并集分析
+  - 比韦恩图更清晰，支持多组
+  - 原作者: Haojia Wu (plot1cell)
+  
+- **plot_complex_heatmap** - 组特异性热图 ✅
+  - 自动识别组特异性基因
+  - ComplexHeatmap展示
+  - 原作者: Haojia Wu (plot1cell)
+  
+- **plot_circlize** - 环形UMAP图 ✅
+  - 环形布局的UMAP/tSNE图
+  - 密度等高线 + 多track展示
+  - 包含9个函数的完整功能集
+  - 原作者: Haojia Wu (plot1cell)
+  - 灵感来源: Linnarsson Lab, Nature 2018
+
+> 改编函数已适配 Seurat v5，保留原作者归属信息。详见 [ATTRIBUTION.md](ATTRIBUTION.md)
 
 ### 通用工具
 - **plot_volcano_hyperbolic** - 双曲线阈值火山图（详见 [使用教程](articles/03_双曲线阈值火山图.md)）
   - 适用于：RNA-seq、CRISPR筛选、蛋白质组、代谢组等
+- **plot_combined_enrichment** - 富集分析组合图（详见 [使用教程](articles/04_富集分析组合图.md)）
+  - 整合多个富集分析结果（GO BP/CC/MF, KEGG等）到一张图中展示
 
 ## 计划添加
 
@@ -51,11 +86,31 @@ plot_gsea(gsea_result, "KEGG_OXIDATIVE_PHOSPHORYLATION")
 
 ```
 BioPlotTools/
-├── functions/       # 绘图函数
-├── examples/        # 使用示例
-├── data/           # 测试数据
-└── articles/       # 详细教程
+├── functions/
+│   ├── plot_custom/      # 原创函数
+│   └── plot_adapted/     # 改编函数（来自 plot1cell）
+├── examples/             # 使用示例
+├── data/                # 测试数据
+├── articles/            # 详细教程
+└── ATTRIBUTION.md       # 函数归属说明
 ```
+
+### 函数分类
+
+本项目包含两类函数：
+
+1. **原创函数** (`functions/plot_custom/`)
+   - 本项目原创开发
+   - 完全自主设计和实现
+   - 许可: MIT License
+
+2. **改编函数** (`functions/plot_adapted/`)
+   - 改编自 [plot1cell](https://github.com/TheHumphreysLab/plot1cell) 包
+   - 已适配 Seurat v5
+   - 保留原作者归属信息
+   - 许可: MIT License (与原始 plot1cell 保持一致)
+
+详细归属信息请查看 [ATTRIBUTION.md](ATTRIBUTION.md)。
 
 ## 使用方式
 
